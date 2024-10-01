@@ -1,62 +1,33 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JAVA_HOME'
-        maven 'MAVEN_HOME'
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/preetam988-sanks/HelloWorld.git'
+                // Checkout the source code from the repository
+                git url: 'https://github.com/preetam988-sanks/HelloWorld.git', branch: 'master' // Update branch if needed
             }
         }
-
-        stage('Build') {
+        stage('Compile') {
             steps {
-                dir('HelloWorld') { // Adjust this if needed
-                    sh 'mvn clean install'
-                }
+                // Compile the HelloWorld.java file
+                sh 'javac HelloWorld.java'
             }
         }
-
-        stage('Test') {
-            steps {
-                dir('HelloWorld') { // Adjust this if needed
-                    sh 'mvn test'
-                }
-            }
-        }
-
-        stage('Package') {
-            steps {
-                dir('HelloWorld') { // Adjust this if needed
-                    sh 'mvn package'
-                }
-            }
-        }
-
         stage('Run') {
             steps {
-                dir('HelloWorld') { // Adjust this if needed
-                    sh 'java -jar target/your-app-name-1.0-SNAPSHOT.jar'
-                }
+                // Run the compiled Java program
+                sh 'java HelloWorld'
             }
         }
     }
 
     post {
-        always {
-            archiveArtifacts artifacts: 'HelloWorld/target/*.jar', allowEmptyArchive: true
-        }
-
         success {
-            echo 'Build succeeded!'
+            echo 'Build and run completed successfully!'
         }
-
         failure {
-            echo 'Build failed.'
+            echo 'Build or run failed.'
         }
     }
 }
