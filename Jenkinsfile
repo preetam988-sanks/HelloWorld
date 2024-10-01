@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // Specify the correct names of JDK and Maven installations as configured in Jenkins
-        jdk 'JDK_HOME' // Make sure this matches the configured JDK in Jenkins
+        jdk 'JAVA_HOME' // Make sure this matches the configured JDK in Jenkins
         maven 'MAVEN_HOME' // Make sure this matches the configured Maven version in Jenkins
     }
 
