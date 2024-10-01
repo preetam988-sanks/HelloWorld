@@ -4,7 +4,7 @@ pipeline {
     tools {
         // Install JDK and Maven
         jdk 'JAVA_HOME' // Make sure to match the JDK version you have configured in Jenkins
-        maven 'Maven' // Match Maven version in Jenkins configuration
+        maven 'MAVEN_HOME' // Match Maven version in Jenkins configuration
     }
 
     stages {
