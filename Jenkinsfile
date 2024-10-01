@@ -4,14 +4,14 @@ pipeline {
     tools {
         // Install JDK and Maven
         jdk 'JDK 11' // Make sure to match the JDK version you have configured in Jenkins
-        maven 'Maven 3.8.1' // Match Maven version in Jenkins configuration
+        maven 'Maven 3.9.9' // Match Maven version in Jenkins configuration
     }
 
     stages {
         stage('Checkout') {
             steps {
                 // Checkout the code from the repository
-                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
+                git branch: 'main', url: 'https://github.com/preetam988-sanks/HelloWorld.git'
             }
         }
 
